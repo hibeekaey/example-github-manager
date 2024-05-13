@@ -1,5 +1,5 @@
 data "github_user" "this" {
-  username = "hibeekaey"
+  username = var.username
 }
 
 resource "github_branch" "this" {

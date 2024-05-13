@@ -32,6 +32,7 @@ No modules.
 | <a name="input_repository_archived"></a> [repository\_archived](#input\_repository\_archived) | GitHub repository archived | `bool` | n/a | yes |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | GitHub repository name | `string` | n/a | yes |
 | <a name="input_repository_visibility"></a> [repository\_visibility](#input\_repository\_visibility) | GitHub repository visibility | `string` | n/a | yes |
+| <a name="input_username"></a> [username](#input\_username) | GitHub username | `string` | n/a | yes |
 
 ## Outputs
 

@@ -1,3 +1,8 @@
+variable "username" {
+  type        = string
+  description = "GitHub username"
+}
+
 variable "name" {
   type        = string
   description = "GitHub repository branch name"
