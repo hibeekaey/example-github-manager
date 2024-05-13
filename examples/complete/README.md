@@ -1,7 +1,3 @@
-# GitHub Manager
-
-Repository for managing GitHub with Terraform
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -17,8 +13,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_repository"></a> [repository](#module\_repository) | ./modules/repository | n/a |
-| <a name="module_repository_default_branch"></a> [repository\_default\_branch](#module\_repository\_default\_branch) | ./modules/branch | n/a |
+| <a name="module_manager"></a> [manager](#module\_manager) | ../../ | n/a |
 
 ## Resources
 

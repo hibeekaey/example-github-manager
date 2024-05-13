@@ -24,6 +24,10 @@ run "setup_tests" {
 run "create_repositories" {
   command = apply
 
+  module {
+    source = "./examples/complete"
+  }
+
   variables {
     repositories = {
       "github-private-repository-test" = merge(var.private_repository, {
@@ -37,27 +41,31 @@ run "create_repositories" {
 
   # Check that the repositories' names are correct
   assert {
-    condition     = module.repository["github-private-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.private_repository.name])
+    condition     = module.manager.repositories["github-private-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.private_repository.name])
     error_message = "Invalid private repository name"
   }
   assert {
-    condition     = module.repository["github-public-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.public_repository.name])
+    condition     = module.manager.repositories["github-public-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.public_repository.name])
     error_message = "Invalid public repository name"
   }
 
   # Check that the repositories' visibilities are correct
   assert {
-    condition     = module.repository["github-private-repository-test"].visibility == "private"
+    condition     = module.manager.repositories["github-private-repository-test"].visibility == "private"
     error_message = "Invalid private repository visibility"
   }
   assert {
-    condition     = module.repository["github-public-repository-test"].visibility == "public"
+    condition     = module.manager.repositories["github-public-repository-test"].visibility == "public"
     error_message = "Invalid public repository visibility"
   }
 }
 
 run "change_repositories_visibilities" {
   command = apply
+
+  module {
+    source = "./examples/complete"
+  }
 
   variables {
     repositories = {
@@ -74,21 +82,21 @@ run "change_repositories_visibilities" {
 
   # Check that the repositories' names are correct
   assert {
-    condition     = module.repository["github-private-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.private_repository.name])
+    condition     = module.manager.repositories["github-private-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.private_repository.name])
     error_message = "Invalid public repository name"
   }
   assert {
-    condition     = module.repository["github-public-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.public_repository.name])
+    condition     = module.manager.repositories["github-public-repository-test"].name == join("-", [run.setup_tests.repository_prefix, var.public_repository.name])
     error_message = "Invalid private repository name"
   }
 
   # Check that the repositories' visibilities are correct
   assert {
-    condition     = module.repository["github-private-repository-test"].visibility == "public"
+    condition     = module.manager.repositories["github-private-repository-test"].visibility == "public"
     error_message = "Invalid public repository visibility"
   }
   assert {
-    condition     = module.repository["github-public-repository-test"].visibility == "private"
+    condition     = module.manager.repositories["github-public-repository-test"].visibility == "private"
     error_message = "Invalid private repository visibility"
   }
 }
