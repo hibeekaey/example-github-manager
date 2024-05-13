@@ -1,4 +1,4 @@
 output "repositories" {
-  value       = module.repository
+  value       = module.manager.repositories
   description = "GitHub repositories"
 }

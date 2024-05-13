@@ -3,10 +3,10 @@
 OUTPUT_FILE="README.md"
 
 # Generate main doc
-terraform-docs markdown --output-file $OUTPUT_FILE  --output-mode inject .
+terraform-docs markdown --output-file $OUTPUT_FILE --output-mode inject --recursive .
 
-# Generate docs for modules
-cd modules
+# Generate docs for examples
+cd examples
 
 IFS=$'\n' modules=($(ls))
 
