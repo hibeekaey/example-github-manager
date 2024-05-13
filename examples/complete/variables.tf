@@ -3,6 +3,11 @@ variable "token" {
   description = "GitHub personal access token"
 }
 
+variable "username" {
+  type        = string
+  description = "GitHub username"
+}
+
 variable "repositories" {
   type = map(object({
     name               = string

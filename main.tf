@@ -1,6 +1,6 @@
 provider "github" {
   token = var.token
-  owner = "hibeekaey"
+  owner = var.username
 }
 
 module "repository" {
@@ -16,6 +16,7 @@ module "repository" {
 module "repository_default_branch" {
   for_each              = module.repository
   source                = "./modules/branch"
+  username              = var.username
   repository_name       = each.value.name
   repository_visibility = each.value.visibility
   repository_archived   = each.value.archived

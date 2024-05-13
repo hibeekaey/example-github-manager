@@ -1,6 +1,6 @@
 provider "github" {
   token = var.token
-  owner = "hibeekaey"
+  owner = var.username
 }
 
 module "repository" {
